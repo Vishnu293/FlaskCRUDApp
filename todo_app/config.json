@@ -1,0 +1,11 @@
+{
+    "app_name": "todo_app",
+    "app_hostname": "localhost",
+    "app_port": 5000,
+    "hostname": "localhost",
+    "port": 3306,
+    "database": "todo_app",
+    "username": "root",
+    "password": "Vishnu293",
+    "secret_key": "vishnu"
+}

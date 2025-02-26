@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}To-Do App{% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  </head>
+  <body>
+    <nav class="navbar">
+      <a href="/" class="{% if request.path == '/' %}active{% endif %}">Home</a>
+
+      {% if 'user_id' in session %}
+        <a href="/logout" class="logout-btn">Logout</a>
+        <span class="welcome-msg"><b>{{ session.get('username', 'User') }}</b></span>
+      {% else %}
+        <a href="/login" class="{% if request.path == '/login' %}active{% endif %}">Login</a>
+        <a href="/register" class="{% if request.path == '/register' %}active{% endif %}">Signup</a>
+      {% endif %}
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=True) %}
+      {% if messages %}
+        <div class="flash-messages">
+          {% for category, message in messages %}
+          <div class="alert alert-{{ category }}">
+              <span class="message-text">{{ message }}</span>
+              <button class="close-btn">&times;</button>
+            </div>
+          {% endfor %}
+        </div> 
+      {% endif %}
+    {% endwith %}
+
+    <div class="container">{% block content %}{% endblock %}</div>
+
+    <script>
+      setTimeout(function () {
+        const flashMessages = document.querySelector(".flash-messages");
+        if (flashMessages) {
+          flashMessages.style.display = "none";
+        }
+      }, 5000); // Automatically close after 5 seconds
+
+      const closeButtons = document.querySelectorAll(".close-btn");
+      closeButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+          button.parentElement.style.display = "none";
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,112 @@
+{% extends 'base.html' %} {% block title %}Home{% endblock %} {% block content
+%}
+<div class="title-container">
+  <h1 class="title">To-Do List</h1>
+
+  {% if 'user_id' in session %}
+  <p class="subtitle">
+    Welcome, {{ session.get('username', 'User') }}! Manage your tasks
+    efficiently.
+  </p>
+</div>
+
+<!-- Add Task Form -->
+<form action="/add" method="post" class="form">
+  <input type="text" name="task" placeholder="Add new task" required />
+  <button type="submit">Add</button>
+</form>
+
+<!-- Task List in Table Format -->
+<div class="task-table-wrapper">
+  <table class="task-table">
+    <thead>
+      <tr>
+        <th>S.No</th>
+        <th>Task</th>
+        <th>Date Created</th>
+        <th>Time Created</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if tasks %} {% for task in tasks %}
+      <tr
+        class="{% if task.completed %}completed-task{% else %}uncompleted-task{% endif %}"
+      >
+        <td>{{ loop.index }}</td>
+        <td class="{% if task.completed %}completed-text{% endif %}">
+          {{ task.name }}
+        </td>
+        <td>{{ task.created_date }}</td>
+        <!-- Date part -->
+        <td>{{ task.created_time }}</td>
+        <!-- Time part -->
+        <td>
+          <!-- Task Completion Button -->
+          <form
+            action="/complete/{{ task.id }}"
+            method="post"
+            style="display: inline"
+          >
+            <button type="submit" class="complete-btn">
+              {% if not task.completed %}
+              <i class="fa-regular fa-circle" title="Mark as complete"></i>
+              {% else %}
+              <i class="fa-solid fa-circle-check" title="Completed"></i>
+              {% endif %}
+            </button>
+          </form>
+
+          <!-- Task Deletion Button -->
+          <form
+            action="/delete/{{ task.id }}"
+            method="post"
+            style="display: inline"
+          >
+            <button type="submit" class="delete-btn">
+              <i class="fa-solid fa-trash" title="Delete task"></i>
+            </button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %} {% else %}
+      <tr>
+        <td colspan="4">No tasks added yet. Start adding your tasks!</td>
+      </tr>
+      {% endif %}
+    </tbody>
+  </table>
+</div>
+
+<!-- Pagination for Previous and Next Tasks (below the table) -->
+<div class="pagination">
+  <div class="pagination-left">
+    {% if has_prev %}
+    <a href="/?page={{ prev_page }}">&lt; Prev</a>
+    {% else %}
+    <span class="inactive-btn">&lt; Prev</span>
+    {% endif %}
+  </div>
+  <div class="pagination-right">
+    {% if has_next %}
+    <a href="/?page={{ next_page }}">Next &gt;</a>
+    {% else %}
+    <span class="inactive-btn">Next &gt;</span>
+    {% endif %}
+  </div>
+</div>
+
+{% else %}
+<!-- If Not Logged In -->
+<div class="card">
+  <h2>Please login to manage your to-do list</h2>
+  <div class="auth-buttons">
+    <form action="/login">
+      <button>Login</button>
+    </form>
+    <form action="/register">
+      <button>Signup</button>
+    </form>
+  </div>
+</div>
+{% endif %} {% endblock %}
