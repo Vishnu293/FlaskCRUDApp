@@ -24,44 +24,21 @@ with app.app_context():
 def is_authenticated():
     return 'user_id' in session
 
-# @app.route('/get-data', methods=["GET"])
-# def get_data():
-#     full_data = []
-#     users = db.session.query(User).all()
-    
-#     if users:
-#         for user in users:
-#             full_data.append({
-#                 "id": user.id,
-#                 "username": user.username,
-#                 "email": user.email,
-#                 "password": user.password
-#             })
-
-#     return full_data, 200
-
 @app.route('/', methods=["GET"])
 def home():
     if is_authenticated():
-        # Get the current page, default to 1
         page = request.args.get('page', 1, type=int)
 
-        # Fetch tasks with pagination, ordering by completed status
         tasks = Task.query.filter_by(user_id=session['user_id']) \
                 .order_by(Task.completed, Task.created_at.desc()) \
                 .paginate(page=page, per_page=10, error_out=False)
 
         for task in tasks.items:
-            print(f"UTC time: {task.created_at}")  # Should be in UTC
-            print(f"IST time: {convert_to_ist(task.created_at)}")  # Should show time converted to IST
-
-            ist_time = convert_to_ist(task.created_at)  # Convert UTC to IST
+            ist_time = convert_to_ist(task.created_at) 
             
-            # Store separate date and time
-            task.created_date = ist_time.strftime('%d-%m-%Y')  # Date part
-            task.created_time = ist_time.strftime('%I:%M %p')  # Time part
+            task.created_date = ist_time.strftime('%d-%m-%Y')
+            task.created_time = ist_time.strftime('%I:%M %p')
 
-        # Pass the tasks and pagination details to the template
         return render_template(
             'index.html', 
             tasks=tasks.items, 
@@ -99,12 +76,10 @@ def register():
 
         flash("User registered successfully. Please log in.", "success")
         return redirect(url_for('login'))
-        # return jsonify({"message": "User registered successfully"}), 201
     
     except Exception as e:
         flash(str(e), "danger")
         return redirect(url_for('register'))
-        # return jsonify({"error": str(e)}), 500
 
 @app.route('/login', methods=["GET", "POST"])
 def login():
@@ -115,7 +90,6 @@ def login():
         password = request.form.get('password')
 
         if not email or not password:
-            # return jsonify({"error": "Missing email or password"}), 400
             flash("Missing email or password", "warning")
             return redirect(url_for('login'))
         
@@ -125,17 +99,14 @@ def login():
             session['user_id'] = user.id
             session['username'] = user.username
             flash("Login successful", "success")
-            # return jsonify({"message": "Login successful"}), 200
             return redirect('/')
         else:
-            # return jsonify({"error": "Invalid email or password"}), 401
             flash("Invalid email or password", "danger")
             return redirect(url_for('login'))
 
     except Exception as e:
         flash(str(e), "danger")
         return redirect(url_for('login'))
-        # return jsonify({"error": str(e)}), 500
 
 @app.route('/logout', methods=["GET", "POST"])
 def logout():

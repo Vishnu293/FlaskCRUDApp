@@ -10,13 +10,11 @@
   </p>
 </div>
 
-<!-- Add Task Form -->
 <form action="/add" method="post" class="form">
   <input type="text" name="task" placeholder="Add new task" required />
   <button type="submit">Add</button>
 </form>
 
-<!-- Task List in Table Format -->
 <div class="task-table-wrapper">
   <table class="task-table">
     <thead>
@@ -38,11 +36,8 @@
           {{ task.name }}
         </td>
         <td>{{ task.created_date }}</td>
-        <!-- Date part -->
         <td>{{ task.created_time }}</td>
-        <!-- Time part -->
         <td>
-          <!-- Task Completion Button -->
           <form
             action="/complete/{{ task.id }}"
             method="post"
@@ -57,7 +52,6 @@
             </button>
           </form>
 
-          <!-- Task Deletion Button -->
           <form
             action="/delete/{{ task.id }}"
             method="post"
@@ -78,7 +72,6 @@
   </table>
 </div>
 
-<!-- Pagination for Previous and Next Tasks (below the table) -->
 <div class="pagination">
   <div class="pagination-left">
     {% if has_prev %}
@@ -97,7 +90,6 @@
 </div>
 
 {% else %}
-<!-- If Not Logged In -->
 <div class="card">
   <h2>Please login to manage your to-do list</h2>
   <div class="auth-buttons">

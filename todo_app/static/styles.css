@@ -18,7 +18,8 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.navbar a, .navbar span {
+.navbar a,
+.navbar span {
   color: #fff;
   margin: 0 2em;
   text-decoration: none;
@@ -94,7 +95,7 @@ body {
   font-weight: bold;
   padding: 12px 20px;
   font-size: 16px;
-  background-color: #FFD700;
+  background-color: #ffd700;
   color: #000;
   border-radius: 5px;
   text-decoration: none;
@@ -104,17 +105,17 @@ body {
 }
 
 .auth-buttons button:hover {
-  background-color: #D4AF37;
+  background-color: #d4af37;
   color: #fff;
 }
 
 /* ------- List Form ------- */
 
 .form {
-  display: flex; /* Flexbox for side-by-side layout */
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 1em; /* Space between input and button */
+  gap: 1em;
 }
 
 .form input {
@@ -138,7 +139,7 @@ body {
   font-weight: bold;
   padding: 12px 20px;
   font-size: 16px;
-  background-color: #FFD700;
+  background-color: #ffd700;
   color: #000;
   border-radius: 5px;
   text-decoration: none;
@@ -148,7 +149,7 @@ body {
 }
 
 .form button:hover {
-  background-color: #D4AF37;
+  background-color: #d4af37;
   color: #fff;
 }
 
@@ -187,7 +188,7 @@ body {
   font-weight: bold;
   padding: 12px 20px;
   font-size: 16px;
-  background-color: #FFD700;
+  background-color: #ffd700;
   color: #000;
   border-radius: 5px;
   text-decoration: none;
@@ -198,7 +199,7 @@ body {
 
 .signup-form button:hover,
 .login-form button:hover {
-  background-color: #D4AF37;
+  background-color: #d4af37;
   color: #fff;
 }
 
@@ -289,13 +290,12 @@ button.delete-btn img {
   text-align: right;
 }
 
-/* Style for non-clickable pagination links */
 .inactive-btn {
   color: #ccc;
   pointer-events: none;
   opacity: 0.6;
 }
-/* Fixed width for columns */
+
 .task-table th:nth-child(1),
 .task-table td:nth-child(1) {
   width: 5%;
@@ -323,65 +323,58 @@ button.delete-btn img {
   width: 15%;
 }
 
-/* Handle text overflow for task names */
 .task-table td:nth-child(2) {
   word-wrap: break-word;
   white-space: normal;
   max-width: 100%;
   overflow-wrap: break-word;
-  word-break: break-word; /* Ensures long words get broken up */
+  word-break: break-word;
 }
 
-/* Special effect for completed tasks */
 .completed-task {
-  background-color: #d3ffd3; /* Light green background for completed tasks */
+  background-color: #d3ffd3;
   transition: background-color 0.3s ease;
 }
 
 .completed-task:hover {
-  background-color: #a6f7a6; /* Lighter green on hover */
+  background-color: #a6f7a6;
 }
 
-/* Strikethrough effect for task text */
 .completed-text {
   text-decoration: line-through;
-  color: #999; /* Light gray color for completed tasks */
+  color: #999;
 }
 
 .complete-btn .fa-circle {
-  color: #3498db; /* Blue for uncompleted tasks */
+  color: #3498db;
   font-size: 1.2rem;
   transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
 
-/* Hover effect: Show check-circle before completion */
 .complete-btn:hover .fa-circle {
-  color: #2ecc71; /* Green on hover */
+  color: #2ecc71;
   transform: scale(1.1);
 }
 
-/* Use pseudo-element to change icon on hover */
 .complete-btn:hover .fa-circle::before {
-  content: "\f058"; /* Unicode for FontAwesome fa-circle-check */
+  content: "\f058";
   font-family: "Font Awesome 6 Free";
   font-weight: 900;
 }
 
-/* Styling for completed task (circle-check icon) */
 .completed-task .fa-circle-check {
-  color: #2ecc71; /* Green for completed tasks */
+  color: #2ecc71;
   font-size: 1.2rem;
 }
 
-/* Styling for delete button */
 .delete-btn .fa-trash {
-  color: #e74c3c; /* Red for delete */
+  color: #e74c3c;
   font-size: 1.2rem;
   transition: color 0.3s ease-in-out, transform 0.2s ease-in-out;
 }
 
 .delete-btn:hover .fa-trash {
-  color: #c0392b; /* Darker red on hover */
+  color: #c0392b;
   transform: scale(1.1);
 }
 
@@ -437,7 +430,6 @@ button.delete-btn img {
   color: #721c24;
 }
 
-/* Close Button (X) */
 .flash-messages .close-btn {
   cursor: pointer;
   background: transparent;
@@ -474,14 +466,14 @@ button.delete-btn img {
 
   .task-table th,
   .task-table td {
-    font-size: 13px; /* Reduce font size */
-    padding: 8px; /* Less padding */
+    font-size: 13px;
+    padding: 8px;
   }
 
   .fa-circle,
   .fa-trash,
   .fa-circle-check {
-    font-size: 1rem !important; /* Decrease size for smaller screens */
+    font-size: 1rem !important;
   }
 }
 
@@ -501,7 +493,7 @@ button.delete-btn img {
   .form button {
     padding: 10px;
     font-size: 14px;
-    height: 40px; /* Ensures uniform height */
+    height: 40px;
   }
 
   .form button,
@@ -510,18 +502,18 @@ button.delete-btn img {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px; /* Make buttons square for consistency */
+    width: 40px;
   }
 
   .form .fa-circle,
   .form .fa-trash,
   .form .fa-circle-check {
-    font-size: 0.8rem !important; /* Reduce icon size on very small screens */
+    font-size: 0.8rem !important;
   }
 
   .form input[type="date"],
   .form input[type="time"] {
-    text-align: center; /* Centers date/time text */
+    text-align: center;
   }
 }
 
@@ -533,14 +525,12 @@ button.delete-btn img {
   align-items: center;
 }
 
-/* === Fix Font Size for Icons in Buttons === */
 .complete-btn .fa-circle,
 .completed-task .fa-circle-check,
 .delete-btn .fa-trash {
-  font-size: 1.2rem; /* Default for large screens */
+  font-size: 1.2rem;
 }
 
-/* Reduce icon size for smaller screens */
 @media (max-width: 826px) {
   .complete-btn .fa-circle,
   .completed-task .fa-circle-check,

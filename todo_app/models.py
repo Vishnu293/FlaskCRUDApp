@@ -12,7 +12,7 @@ class Task(db.Model):
     __tablename__ = "tasks"
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     name = db.Column(db.String(1000), nullable=False)
-    created_at = db.Column(db.DateTime, default=lambda: datetime.utcnow().replace(tzinfo=pytz.UTC))  # Store in UTC
+    created_at = db.Column(db.DateTime, default=lambda: datetime.utcnow().replace(tzinfo=pytz.UTC))
     completed = db.Column(db.Boolean, default=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     
@@ -29,6 +29,6 @@ class User(db.Model):
 
 def convert_to_ist(utc_time):
     if utc_time.tzinfo is None:
-        utc_time = pytz.utc.localize(utc_time)  # Localize the UTC time if it's naive
+        utc_time = pytz.utc.localize(utc_time)
     ist = pytz.timezone('Asia/Kolkata')
     return utc_time.astimezone(ist)
