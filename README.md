@@ -53,17 +53,17 @@ Here are some key screenshots that show the various features of the app:
 
 ### Signin & Signup Pages
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-  <img src="https://i.postimg.cc/g0Y8q4tY/1.png" width="350" height="200">
-  <img src="https://i.postimg.cc/BnfxtJxP/2.png" width="350" height="200">
-  <img src="https://i.postimg.cc/s2wSnSb5/3.png" width="350" height="200">
-  <img src="https://i.postimg.cc/SRzMNPRG/7.png" width="350" height="200">
+  <img src="https://res.cloudinary.com/dqdgle0dz/image/upload/v1748543967/1_jpafpd.png" width="350" height="200">
+  <img src="https://res.cloudinary.com/dqdgle0dz/image/upload/v1748543965/2_rnrpue.png" width="350" height="200">
+  <img src="https://res.cloudinary.com/dqdgle0dz/image/upload/v1748543963/3_1_dskvs4.png" width="350" height="200">
+  <img src="https://res.cloudinary.com/dqdgle0dz/image/upload/v1748543955/7_1_wt9eot.png" width="350" height="200">
 </div>
 
 ### Task Management Pages
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">  
-  <img src="https://i.postimg.cc/pLQKF3ZG/4.png" width="350" height="200">
-  <img src="https://i.postimg.cc/qRFKrrJR/5.png" width="350" height="200">
-  <img src="https://i.postimg.cc/SsR9HRp3/6.png" width="350" height="200">
+  <img src="https://res.cloudinary.com/dqdgle0dz/image/upload/v1748543961/4_1_ck2ult.png" width="350" height="200">
+  <img src="https://res.cloudinary.com/dqdgle0dz/image/upload/v1748543959/5_1_g7snjh.png" width="350" height="200">
+  <img src="https://res.cloudinary.com/dqdgle0dz/image/upload/v1748543957/6_y9sabh.png" width="350" height="200">
 </div>
 
 ---
